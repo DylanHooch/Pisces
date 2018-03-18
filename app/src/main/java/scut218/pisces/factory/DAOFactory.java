@@ -9,6 +9,8 @@ import scut218.pisces.dao.UserDAO;
  */
 
 public class DAOFactory {
+    public static final int Mysql= 1;
+    public static final int Sqlite = 2;
     public CommentDAO getCommentDAO()
     {
         return null;

@@ -11,7 +11,6 @@ import scut218.pisces.beans.Moment;
 public interface MomentDAO {
     void insert(Moment moment);
     void delete(int id);
-    void update(Moment moment);
     Moment queryById(int id);
     List<Moment> queryAll();
     List<Moment> queryByAuthorId(String id);

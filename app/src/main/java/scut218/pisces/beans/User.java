@@ -16,17 +16,31 @@ public class User {
     private String nickname;
     private String phone;
     private String gender;
-    private java.sql.Date brithday;
+    private java.sql.Date birthday;
     private String photoPath;
     private String whatsup;
     private String school;
     private int grade;
     private UserUtil userUtil;
 
+    public User() {
+    }
 
+    public User(String id,String password,String nickname,String phone,String gender,String photoPath, String whatsup,String school,Date birthday,int grade) {
+        this.id=id;
+        this.password=password;
+        this.nickname=nickname;
+        this.phone=phone;
+        this.gender=gender;
+        this.photoPath=photoPath;
+        this.whatsup=whatsup;
+        this.school=school;
+        this.birthday=birthday;
+        this.grade=grade;
+    }
 
-    public Date getBrithday() {
-        return brithday;
+    public Date getBirthday() {
+        return birthday;
     }
 
     public int getGrade() {
@@ -65,8 +79,8 @@ public class User {
         return whatsup;
     }
 
-    public void setBrithday(Date brithday) {
-        this.brithday = brithday;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public void setGender(String gender) {

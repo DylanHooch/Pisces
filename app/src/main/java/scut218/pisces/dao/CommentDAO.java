@@ -11,8 +11,7 @@ import scut218.pisces.beans.Comment;
 public interface CommentDAO {
     void insert(Comment comment);
     void delete(int id);
-    void update(Comment comment);
-    void queryById(int id);
-    void queryAll();
+    Comment queryById(int id);
+    List<Comment> queryAll();
     List<Comment> queryByMomentId(int id);
 }

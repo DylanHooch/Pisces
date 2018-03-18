@@ -10,14 +10,23 @@ import java.sql.Timestamp;
 public class Comment {
     private int id;
     private String text;
-    private String mId;//评论位于哪一条动态下
+    private int mId;//评论位于哪一条动态下
     private String userId;//评论者
     private java.sql.Timestamp time;
     private int type;//有可能是直接评论或者回复
     private String replyUserId;//回复谁
     public final int DIRCOMMENT=1;
     public final int REPLY=2;
-
+    public Comment(int id,String text,int mId,String replyUserId,String userId,int type,Timestamp time)
+    {   this.id=id;
+        this.text=text;
+        this.mId=mId;
+        this.replyUserId=replyUserId;
+        this.userId=userId;
+        this.type=type;
+        this.time=time;
+    }
+    public Comment() {}
     public Timestamp getTime() {
         return time;
     }
@@ -34,7 +43,7 @@ public class Comment {
         return id;
     }
 
-    public String getmId() {
+    public int getmId() {
         return mId;
     }
 
@@ -62,7 +71,7 @@ public class Comment {
         this.id = id;
     }
 
-    public void setmId(String mId) {
+    public void setmId(int mId) {
         this.mId = mId;
     }
 

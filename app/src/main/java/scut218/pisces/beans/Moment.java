@@ -17,7 +17,17 @@ public class Moment {
     public final int IMAGE=1;
     public final int TEXT=2;
     public final int VIDEO=3;
-
+    public Moment(){}
+    public Moment(int id,String authorId,int type,Timestamp time,String path,String location,String text)
+    {
+        this.id=id;
+        this.type=type;
+        this.authorId=authorId;
+        this.time=time;
+        this.path=path;
+        this.location=location;
+        this.text=text;
+    }
     public int getId() {
         return id;
     }
