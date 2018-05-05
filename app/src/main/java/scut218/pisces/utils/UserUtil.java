@@ -8,6 +8,7 @@ import scut218.pisces.beans.User;
  */
 
 public interface UserUtil {
+    UserUtil getInstance();
     int register(User user);
     int login(String id,String pw);
     int updateProf(User user);

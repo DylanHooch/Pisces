@@ -9,7 +9,5 @@ import scut218.pisces.beans.User;
  */
 
 public interface PiscesSystem {
-    public int register(User user);
-    public int login(String id,String pw);
-    public int post(Moment moment);
+
 }
