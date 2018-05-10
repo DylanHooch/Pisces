@@ -8,7 +8,7 @@ import scut218.pisces.base.MyApplication;
 import static java.lang.Thread.sleep;
 
 public class FileUtil {
-    private static String filePath= MyApplication.getContext().getFilesDir().getPath();
+    private static String filePath= MyApplication.getContext().getFilesDir().getPath()+'/';
 //    private static String filePath="F:\\";
         /**
          * 保存到手机内存设备中

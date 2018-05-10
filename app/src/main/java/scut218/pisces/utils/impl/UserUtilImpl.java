@@ -74,7 +74,11 @@ public class UserUtilImpl implements UserUtil {
                 Log.e("requestProf","requestProf failure");
                 return null;
             }
-            else return analyze.toUsers(msg);
+            else {
+                List<User> users=analyze.toUsers(msg);
+                User.userMap.put(users.get(0).getId(),users.get(0));
+                return users;
+            }
         }catch (Exception e){
             e.printStackTrace();
             Log.e("requestProf","send error");
@@ -104,6 +108,7 @@ public class UserUtilImpl implements UserUtil {
         try{
             long rid=networkUtil.send(packer.LoginPack(id,pw));
             MsgProtocol.msgProtocol msg=networkUtil.receive(rid);
+            Log.e("login","sent");
             if(msg==null)
             {
                 Log.e("login","receive error");

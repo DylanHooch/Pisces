@@ -18,7 +18,6 @@ import scut218.pisces.utils.impl.DensityUtil;
 
 
 public class SnsPopupWindow extends PopupWindow implements View.OnClickListener {
-    private TableRow digBtn;
     private TableRow commentBtn;
 
     // 实例化一个矩形
@@ -45,7 +44,6 @@ public class SnsPopupWindow extends PopupWindow implements View.OnClickListener 
     public SnsPopupWindow(Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.sns_popupwindow, null);
         commentBtn = (TableRow) view.findViewById(R.id.commentBtn);
-        digBtn.setOnClickListener(this);
         commentBtn.setOnClickListener(this);
 
         this.setContentView(view);

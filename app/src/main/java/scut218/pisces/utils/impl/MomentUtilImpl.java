@@ -3,6 +3,7 @@ package scut218.pisces.utils.impl;
 import android.util.Log;
 
 import scut218.pisces.Constants;
+import scut218.pisces.base.MyApplication;
 import scut218.pisces.beans.Comment;
 import scut218.pisces.beans.Moment;
 import scut218.pisces.factory.UtilFactory;
@@ -15,16 +16,18 @@ import scut218.pisces.utils.NetworkUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class MomentUtilImpl implements MomentUtil {
-    private static int id=0;
-    private static int commentId=0;
+    private static int id=(Integer)(SharedPreferencesUtil.getInstance(MyApplication.getContext(),"sp").getData("momentId",new Integer(1)));
+    private static int commentId=(Integer)(SharedPreferencesUtil.getInstance(MyApplication.getContext(),"sp").getData("commentId",new Integer(1)));
 
     public static HashMap<Integer,List<Comment>> commentMap=new HashMap<>();
 
     @Override
     public int post(Moment moment) {
         moment.setId(id++);
+        SharedPreferencesUtil.getInstance(MyApplication.getContext(),"sp").saveData("commentId",commentId);
         RequestPacker packer=new RequestPacker();
         NetworkUtil networkUtil= UtilFactory.getNetworkUtil();
         try{
@@ -54,6 +57,7 @@ public class MomentUtilImpl implements MomentUtil {
     @Override
     public int addComment(Comment comment) {
         comment.setId(commentId++);
+        SharedPreferencesUtil.getInstance(MyApplication.getContext(),"sp").saveData("commentId",commentId);
         RequestPacker packer=new RequestPacker();
         NetworkUtil networkUtil= UtilFactory.getNetworkUtil();
         try{
@@ -92,12 +96,14 @@ public class MomentUtilImpl implements MomentUtil {
         NetworkUtil networkUtil= UtilFactory.getNetworkUtil();
         try{
             long rid=networkUtil.send(packer.rquesetMomentPack(packer.ALLMOMENT,UtilFactory.getUserUtil().getMyId(),UtilFactory.getUserUtil().getMyId()));
+            Log.e("rid",""+rid);
             MsgProtocol.msgProtocol msg=networkUtil.receive(rid);
             if(msg==null)
             {
                 Log.e("requestMoment","receive error");
                 return null;
             }
+            Log.e("requestMoment","receive success");
             ClientProtoAnalyze analyze=new ClientProtoAnalyze();
             int type=analyze.getType(msg);
             if(type==analyze.ERROR){

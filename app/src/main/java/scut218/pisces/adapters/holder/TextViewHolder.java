@@ -13,7 +13,8 @@ public class TextViewHolder extends BaseViewHolder {
     }
 
     @Override
-    public void initSubView(int viewType, ViewStub viewStub) {
+    public void initImage(int viewType, View view) {
 
     }
+
 }

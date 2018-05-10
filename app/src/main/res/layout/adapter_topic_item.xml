@@ -64,8 +64,8 @@
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
                 <!-- 不同的地方 -->
-                <ViewStub
-                    android:id="@+id/viewStub"
+                <ImageView
+                    android:id="@+id/item_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp" />
@@ -138,14 +138,6 @@
                 android:background="@color/listview_bg_color"
                 android:layout_marginTop="12dp">
 
-                <com.example.alumna.widgets.PraiseListView
-                    android:id="@+id/praiseList"
-                    android:visibility="gone"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:lineSpacingMultiplier="1.1"
-                    android:textSize="15sp" />
 
                 <View
                     android:id="@+id/line"
@@ -156,7 +148,7 @@
                     android:layout_marginTop="5dip"
                     android:background="#dadada" />
 
-                <com.example.alumna.widgets.CommentListView
+                <scut218.pisces.widget.CommentListView
                     android:id="@+id/commentList"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"

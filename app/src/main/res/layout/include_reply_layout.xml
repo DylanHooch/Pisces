@@ -102,7 +102,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <com.rance.chatui.widget.NoScrollViewPager
+        <scut218.pisces.widget.NoScrollViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

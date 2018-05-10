@@ -15,20 +15,29 @@ import scut218.pisces.utils.UserUtil;
  */
 
 public class PreLoadTask extends AsyncTask<Void,Void,Boolean> {
-    public boolean isLoading=false;
-    public boolean fail=false;
+    public static boolean isLoading=false;
+    public static boolean fail=false;
     @Override
     protected Boolean doInBackground(Void... voids) {
         isLoading=true;
         UserUtil userUtil= UtilFactory.getUserUtil();
-        User.me=userUtil.requestProf(userUtil.getMyId()).get(0);
+        List<User> users=userUtil.requestProf(userUtil.getMyId());
+        if(users==null)
+        {
+            Log.e("requestProf","error");
+            return false;
+        }
+        User.me=users.get(0);
 
         List<Friend> friends= userUtil.requestFriends();
         if(friends==null)
         {
+            Log.e("requestFriends","error");
             return false;
         }
+
         User.friendList.addAll(friends);
+        Log.e("preload","success"+friends.size());
         return true;
     }
 
@@ -39,7 +48,7 @@ public class PreLoadTask extends AsyncTask<Void,Void,Boolean> {
         isLoading=false;
         if(aBoolean)
         {
-            fail=true;
-        }else fail=false;
+            fail=false;
+        }else fail=true;
     }
 }

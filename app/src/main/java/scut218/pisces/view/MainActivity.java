@@ -1,5 +1,6 @@
 package scut218.pisces.view;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import scut218.pisces.R;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MessageFragment.O
         setContentView(R.layout.activity_main);
         findViews();
         setSupportActionBar(toolbar);
+
         if(messageFragment==null){
             messageFragment=MessageFragment.newInstance(MainActivity.this);
         }
@@ -61,9 +64,9 @@ public class MainActivity extends AppCompatActivity implements MessageFragment.O
                                         .commit();
                                 return true;
                             case R.id.action_bottom_find:
-                                getSupportFragmentManager().beginTransaction()
-                                        .replace(R.id.frame_fragmentholder, MomentFragment.newInstance(MainActivity.this,uid))
-                                        .commit();
+                                    Intent intent=new Intent(MainActivity.this, PostActivity.class);
+                                    intent.putExtra("flag",1);
+                                    MainActivity.this.startActivity(intent);
                                 return true;
                             case R.id.action_bottom_me:
                                 Toast.makeText(MainActivity.this,"aa",Toast.LENGTH_SHORT).show();

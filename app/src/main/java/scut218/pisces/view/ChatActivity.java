@@ -23,6 +23,7 @@ import scut218.pisces.adapters.ChatAdapter;
 import scut218.pisces.adapters.CommonFragmentPagerAdapter;
 import scut218.pisces.beans.FullImageInfo;
 import scut218.pisces.beans.MessageInfo;
+import scut218.pisces.beans.User;
 import scut218.pisces.view.fragments.ChatEmotionFragment;
 import scut218.pisces.view.fragments.ChatFunctionFragment;
 import scut218.pisces.utils.impl.Constants;
@@ -65,6 +66,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private String myId;
     private String friendId;
+    private String path;
 
     private EmotionInputDetector mDetector;
     private ArrayList<Fragment> fragments;
@@ -84,10 +86,11 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_chat);
         Intent intent=getIntent();
         myId=intent.getStringExtra("myId");
         friendId=intent.getStringExtra("friendId");
+        path=intent.getStringExtra("fpath");
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
         initWidget();
@@ -210,9 +213,9 @@ public class ChatActivity extends AppCompatActivity {
         messageInfos = new ArrayList<>();
 
         MessageInfo messageInfo = new MessageInfo();
-        messageInfo.setContent("你好，欢迎使用Rance的聊天界面框架");
+        messageInfo.setContent("hi");
         messageInfo.setType(Constants.CHAT_ITEM_TYPE_LEFT);
-        messageInfo.setHeader("http://tupian.enterdesk.com/2014/mxy/11/2/1/12.jpg");
+        messageInfo.setHeader(path);
         messageInfos.add(messageInfo);
 
         MessageInfo messageInfo1 = new MessageInfo();
@@ -226,11 +229,11 @@ public class ChatActivity extends AppCompatActivity {
         MessageInfo messageInfo2 = new MessageInfo();
         messageInfo2.setImageUrl("http://img4.imgtn.bdimg.com/it/u=1800788429,176707229&fm=21&gp=0.jpg");
         messageInfo2.setType(Constants.CHAT_ITEM_TYPE_LEFT);
-        messageInfo2.setHeader("http://tupian.enterdesk.com/2014/mxy/11/2/1/12.jpg");
+        messageInfo2.setHeader(path);
         messageInfos.add(messageInfo2);
 
         MessageInfo messageInfo3 = new MessageInfo();
-        messageInfo3.setContent("[微笑][色][色][色]");
+        messageInfo3.setContent("[微笑]");
         messageInfo3.setType(Constants.CHAT_ITEM_TYPE_RIGHT);
         messageInfo3.setSendState(Constants.CHAT_ITEM_SEND_ERROR);
         messageInfo3.setHeader("http://img.dongqiudi.com/uploads/avatar/2014/10/20/8MCTb0WBFG_thumb_1413805282863.jpg");
@@ -256,14 +259,14 @@ public class ChatActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 MessageInfo message = new MessageInfo();
-                message.setContent("这是模拟消息回复");
+                message.setContent("hello");
                 message.setType(Constants.CHAT_ITEM_TYPE_LEFT);
-                message.setHeader("http://tupian.enterdesk.com/2014/mxy/11/2/1/12.jpg");
+                message.setHeader(path);
                 messageInfos.add(message);
                 chatAdapter.add(message);
                 chatList.scrollToPosition(chatAdapter.getCount() - 1);
             }
-        }, 3000);
+        }, 5000);
     }
 
     @Override

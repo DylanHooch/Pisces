@@ -12,13 +12,13 @@
         android:layout_height="match_parent"
         android:id="@+id/recyclerview_moment"/>
 
-    <android.support.design.widget.FloatingActionButton
-        app:rippleColor="#444444"
-        app:backgroundTint="#777777"
-        android:id="@+id/fab_post"
+    <Button
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        app:backgroundTint="#512553"
         android:src="@drawable/post"/>
 </android.support.v4.widget.SwipeRefreshLayout>

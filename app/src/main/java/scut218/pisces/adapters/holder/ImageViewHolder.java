@@ -1,5 +1,6 @@
 package scut218.pisces.adapters.holder;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import com.lzy.imagepicker.bean.ImageItem;
 import java.util.ArrayList;
 
 import scut218.pisces.R;
+import scut218.pisces.base.MyApplication;
 import scut218.pisces.beans.Moment;
 
 /**
@@ -23,20 +25,16 @@ public class ImageViewHolder extends BaseViewHolder {
     }
 
     @Override
-    public void initSubView(int viewType, ViewStub viewStub) {
-        if(viewStub == null){
-            throw new IllegalArgumentException("viewStub is null...");
-        }
-        viewStub.setLayoutResource(R.layout.viewstub_image);
-        View subView=viewStub.inflate();
-        ImageView view=(ImageView) subView.findViewById(R.id.imageView);
-        if (view!=null){
-            this.imageView =view;
-        }
+    public void initImage(int viewType, View view) {
+        imageView=(ImageView)view.findViewById(R.id.item_image);
     }
 
     public void show(Moment moment){
+        Log.e("moment",moment.getPath());
         String url=moment.getPath();
-
+        Glide.with(MyApplication.getContext())
+                .load(url)
+                .into(imageView);
+        imageView.setVisibility(View.VISIBLE);
     }
 }

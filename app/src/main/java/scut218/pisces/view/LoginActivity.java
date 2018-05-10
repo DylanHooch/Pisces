@@ -261,7 +261,7 @@ public class LoginActivity extends AppCompatActivity {
             UserUtil userUtil=UtilFactory.getUserUtil();
             if(userUtil.login(mId,mPassword)== Constants.SUCCESS)
                 return true;
-            return true;
+            return false;
         }
 
         @Override

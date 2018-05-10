@@ -19,6 +19,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class MomentFragment extends Fragment {
 
 
     private AppCompatActivity activity;
-    private FloatingActionButton fab;
+    private Button button;
     private RecyclerView mRecyclerView;
     private MomentAdapter momentAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -68,10 +69,8 @@ public class MomentFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_moment, container, false);
 
-        fab=(FloatingActionButton)view.findViewById(R.id.fab_post);
-        fab.show();
-        fab.setVisibility(View.VISIBLE);
-        fab.setOnClickListener(new View.OnClickListener() {
+        button=(Button)view.findViewById(R.id.fab);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(activity, PostActivity.class);
@@ -79,7 +78,7 @@ public class MomentFragment extends Fragment {
                 activity.startActivity(intent);
             }
         });
-        fab.setOnLongClickListener(new View.OnLongClickListener() {
+        button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 Intent intent=new Intent(activity,PostActivity.class);
@@ -165,9 +164,12 @@ public class MomentFragment extends Fragment {
             momentList=momentUtil.requestAllMoment();
             if(momentList==null)
                 return false;
-            momentAdapter.setData(momentList);
+            Log.e("momentSize",""+momentList.size());
+            publishProgress();
             return true;
         }
+
+
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
@@ -181,11 +183,8 @@ public class MomentFragment extends Fragment {
 
         @Override
         protected void onProgressUpdate(Boolean... values) {
-            if(values[0]){
-                momentAdapter.setData(momentList);
-            }
-            else
-                Toast.makeText(activity,"网络超时",Toast.LENGTH_SHORT);
+            momentAdapter.setData(momentList);
+            mSwipeRefreshLayout.setRefreshing(false);
         }
     }
 }

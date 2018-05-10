@@ -35,7 +35,6 @@ public class ImageUtil {
         {
             UserUtil userUtil= UtilFactory.getUserUtil();
             user=userUtil.requestProf(id).get(0);
-            User.userMap.put(user.getId(),user);
         }
 
         Glide.with(MyApplication.getContext())

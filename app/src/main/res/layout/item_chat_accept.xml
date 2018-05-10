@@ -45,7 +45,7 @@
             android:gravity="left|center_vertical"
             android:background="@mipmap/chatfrom_bg_normal">
 
-            <com.rance.chatui.widget.GifTextView
+            <scut218.pisces.widget.GifTextView
                 android:id="@+id/chat_item_content_text"
                 style="@style/text_subhead_black"
                 android:layout_marginLeft="@dimen/content_horizontal_margin" />

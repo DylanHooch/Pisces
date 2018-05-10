@@ -142,12 +142,12 @@ public class RequestPacker {
                 break;
             //queryAll
             case(5):
-                msgBuilder.setMsgDetail("TEXT","queryMomentAll", ByteString.copyFrom("queryMomentAll".getBytes()));
+                msgBuilder.setMsgDetail("TEXT","queryMomentAllById", ByteString.copyFrom("queryMomentAllById".getBytes()));
                 msgBuilder.setMsgDetail("TEXT","", ByteString.copyFrom(queryId.getBytes()));
                 break;
             //queryAllbyid 查询一个人的所有moment
             case(6):
-                msgBuilder.setMsgDetail("TEXT","queryMomentAllById", ByteString.copyFrom("queryMomentAllById".getBytes()));
+                msgBuilder.setMsgDetail("TEXT","queryMomentAll", ByteString.copyFrom("queryMomentAll".getBytes()));
                 msgBuilder.setMsgDetail("TEXT","", ByteString.copyFrom(queryId.getBytes()));
                 break;
         }

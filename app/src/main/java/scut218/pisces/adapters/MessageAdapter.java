@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import scut218.pisces.MySquareImageView;
 import scut218.pisces.R;
+import scut218.pisces.beans.Friend;
 import scut218.pisces.beans.User;
 import scut218.pisces.factory.UtilFactory;
 import scut218.pisces.view.ChatActivity;
@@ -23,16 +26,19 @@ import scut218.pisces.view.ChatActivity;
 
 public class MessageAdapter extends RecyclerView.Adapter {
     AppCompatActivity activity;
-    int count=0;
-    ActionMode mode;
 
-    List<User> friends;
+    List<Friend> friends;
 
     public MessageAdapter(AppCompatActivity activity)
     {
         super();
         this.activity=activity;
 
+    }
+
+    public void setData(List<Friend> friends){
+        this.friends=friends;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -42,25 +48,26 @@ public class MessageAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         //TODO 将list[position]的内容放上去,同时set监听器
         //TODO 看看需不需要提前将聊天记录加载到此处
-        MySquareImageView imageView=((messageHolder)holder).imageView;
         TextView title=((messageHolder)holder).title;
         TextView content=((messageHolder)holder).content;
         TextView date=((messageHolder)holder).date;
-        imageView.setImageBitmap(BitmapFactory.decodeResource(activity.getResources(),R.drawable.test));
-        title.setText("Test");
-        content.setText("test");
-        date.setText("testdate");
+        Glide.with(activity).load(friends.get(position).getPhotoPath()).into(((messageHolder) holder).imageView);
+        title.setText(friends.get(position).getFriendId());
+        content.setText("hi");
+        date.setText("11:30");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //开启聊天Activity
                 Intent intent=new Intent(activity, ChatActivity.class);
                 intent.putExtra("myId", UtilFactory.getUserUtil().getMyId());
+                intent.putExtra("friendId",friends.get(position).getFriendId());
+                intent.putExtra("fpath",friends.get(position).getPhotoPath());
                 //TODO startActivity,putExtra"friendId"
-
+                activity.startActivity(intent);
             }
         });
     }

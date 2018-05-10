@@ -86,13 +86,11 @@ public class MomentAdapter extends RecyclerView.Adapter {
         //popupwindow
         holder.initPopupWindow(moments.get(position).getId());
 
-        switch (holder.viewType){
-            case BaseViewHolder.TYPE_IMAGE://图片
-                ((ImageViewHolder)holder).show(moments.get(position));
-                break;
-        }
+        if(holder instanceof ImageViewHolder)
+            ((ImageViewHolder)holder).show(moments.get(position));
 
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

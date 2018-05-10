@@ -34,8 +34,8 @@ import scut218.pisces.widget.SnsPopupWindow;
 
 public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 
-    public final static int TYPE_TEXT = 1;
-    public final static int TYPE_IMAGE = 2;
+    public final static int TYPE_TEXT = 0;
+    public final static int TYPE_IMAGE = 1;
 
 
     public View view;
@@ -61,8 +61,7 @@ public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
         view=itemView;
         this.viewType=type;
 
-        ViewStub viewStub = (ViewStub) itemView.findViewById(R.id.viewStub);
-        initSubView(viewType, viewStub);
+        initImage(viewType,view);
         head=(ImageView)itemView.findViewById(R.id.headIv);
         name=(TextView)itemView.findViewById(R.id.nameTv);
         time=(TextView)itemView.findViewById(R.id.timeTv);
@@ -80,7 +79,7 @@ public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public abstract void initSubView(int viewType, ViewStub viewStub);
+    public abstract void initImage(int viewType,View view);
 
     public void setData(Moment moment){
 
@@ -164,6 +163,7 @@ public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
                                 comment.setReplyUserId("no");
                                 comment.setmId(tid);
                                 comment.setUserId(UtilFactory.getUserUtil().getMyId());
+                                comment.setText(text);
                                 momentUtil.addComment(comment);
                                 setCommentListView((ArrayList<Comment>)MomentUtilImpl.commentMap.get(tid));
                             }
