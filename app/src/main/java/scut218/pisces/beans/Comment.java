@@ -12,7 +12,7 @@ public class Comment {
     private String text;
     private int mId;//评论位于哪一条动态下
     private String userId;//评论者
-    private java.sql.Timestamp time;
+    private Timestamp time;
     private int type;//有可能是直接评论或者回复
     private String replyUserId;//回复谁
     public final int DIRCOMMENT=1;

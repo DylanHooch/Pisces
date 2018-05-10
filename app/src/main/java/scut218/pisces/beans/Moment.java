@@ -1,6 +1,7 @@
 package scut218.pisces.beans;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Lenovo on 2018/3/14.
@@ -10,13 +11,16 @@ public class Moment {
     private int id;
     private int type;
     private String authorId;//谁发的
-    private java.sql.Timestamp time;
+    private Timestamp time;
     private String path;//若type为图片，则path代表存储图片的文件夹路径
     private String location;
     private String text;
     public final int IMAGE=1;
     public final int TEXT=2;
     public final int VIDEO=3;
+
+
+
     public Moment(){}
     public Moment(int id,String authorId,int type,Timestamp time,String path,String location,String text)
     {
@@ -83,4 +87,5 @@ public class Moment {
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
     }
+
 }

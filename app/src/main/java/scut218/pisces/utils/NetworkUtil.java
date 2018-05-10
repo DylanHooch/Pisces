@@ -1,14 +1,11 @@
 package scut218.pisces.utils;
-
-import scut218.pisces.beans.Request;
-import scut218.pisces.beans.Response;
-
+import scut218.pisces.proto.MsgProtocol;
 /**
  * Created by Lenovo on 2018/3/14.
  */
 
 public interface NetworkUtil {
-    int send(Request request,String address,String port);
-    int listen(String port);
-    Response recv();
+    void init(String str);//建立长连接
+    long send(MsgProtocol.msgProtocol msg);
+    MsgProtocol.msgProtocol receive(long id);
 }

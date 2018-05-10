@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message msgProtocol{
+    string time=1;//要第一个set
+    int64 id=2;
+    string fromWhom=3;
+    string toWhom=4;
+
+    enum Type{
+        MOMENT=0;
+        COMMENT=1;
+        FUNREQ=2;
+        OTHERS=3;
+    }
+
+    Type type=5;
+
+    enum msgType {
+        TEXT=0;//文字
+        IMAGE=1;//图片
+    }
+
+    message msgDetail{
+        msgType Type=1;
+        string msgName=2;
+        bytes msgStream=3;
+    }
+    repeated msgDetail msgD=6;
+}

@@ -1,5 +1,8 @@
 package scut218.pisces.utils;
 
+import java.util.List;
+
+import scut218.pisces.beans.Friend;
 import scut218.pisces.beans.Moment;
 import scut218.pisces.beans.User;
 
@@ -8,9 +11,14 @@ import scut218.pisces.beans.User;
  */
 
 public interface UserUtil {
-    UserUtil getInstance();
     int register(User user);
-    int login(String id,String pw);
+    int login(String id, String pw);
     int updateProf(User user);
-    int post(Moment moment);
+    int addFriend(Friend friend);
+    int deleteFriend(String friendId);
+    List<Friend> requestFriends();
+    List<User>  requestProf(String id);
+    String getMyId();
+
+
 }

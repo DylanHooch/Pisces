@@ -6,9 +6,9 @@
         <item name="windowActionBar">false</item>
         <!-- 使用 API Level 22以上编译的话，要拿掉前綴字 -->
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#787D7B</item>
+        <item name="colorPrimaryDark">#1C1C1C</item>
+        <item name="colorAccent">#6E552F</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -19,5 +19,32 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="text_subhead_black">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_title</item>
+        <item name="android:textSize">@dimen/text_subhead</item>
+    </style>
+
+    <style name="text_body">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_sub</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+    <!--SnsPopupWindow的运动动画-->
+    <style name="sns_pop_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/sns_pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/sns_pop_exit_anim</item>
+    </style>
+
+    <style name="edittext_pop_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/edittext_pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/edittext_pop_exit_anim</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

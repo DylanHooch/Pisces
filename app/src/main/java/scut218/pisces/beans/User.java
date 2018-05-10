@@ -1,8 +1,13 @@
 package scut218.pisces.beans;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import scut218.pisces.Constants;
+import scut218.pisces.base.MyApplication;
 import scut218.pisces.utils.UserUtil;
 
 /**
@@ -21,9 +26,24 @@ public class User {
     private String whatsup;
     private String school;
     private int grade;
-    private UserUtil userUtil;
+
+    public static User me;
+    public static HashMap<String,User> userMap=new HashMap<>();//附近的人和好友都放在里面
+
+    public static List<Friend> friendList=new ArrayList<>();//好友id列表
+    public static List<String> nearbyIdList=new ArrayList<>();//附近的人id列表
 
     public User() {
+        this.id="";
+        this.password="";
+        this.nickname="";
+        this.phone="";
+        this.gender="";
+        this.photoPath= MyApplication.getContext().getFilesDir().getPath()+"/default.jpg";
+        this.whatsup="";
+        this.school="";
+        this.birthday=new java.sql.Date(new java.util.Date().getTime());
+        this.grade=0;
     }
 
     public User(String id,String password,String nickname,String phone,String gender,String photoPath, String whatsup,String school,Date birthday,int grade) {

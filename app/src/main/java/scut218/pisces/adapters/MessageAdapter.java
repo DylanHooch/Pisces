@@ -1,5 +1,6 @@
 package scut218.pisces.adapters;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -8,8 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import scut218.pisces.MySquareImageView;
 import scut218.pisces.R;
+import scut218.pisces.beans.User;
+import scut218.pisces.factory.UtilFactory;
+import scut218.pisces.view.ChatActivity;
 
 /**
  * Created by Lenovo on 2018/3/23.
@@ -19,6 +25,9 @@ public class MessageAdapter extends RecyclerView.Adapter {
     AppCompatActivity activity;
     int count=0;
     ActionMode mode;
+
+    List<User> friends;
+
     public MessageAdapter(AppCompatActivity activity)
     {
         super();
@@ -44,12 +53,22 @@ public class MessageAdapter extends RecyclerView.Adapter {
         title.setText("Test");
         content.setText("test");
         date.setText("testdate");
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //开启聊天Activity
+                Intent intent=new Intent(activity, ChatActivity.class);
+                intent.putExtra("myId", UtilFactory.getUserUtil().getMyId());
+                //TODO startActivity,putExtra"friendId"
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         //TODO 将list大小返回
-        return 1;
+        return friends==null? 0 : friends.size();
     }
 
     @Override

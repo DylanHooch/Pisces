@@ -8,9 +8,15 @@
         android:title="@string/message"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_bottom_find"
+        android:id="@+id/action_bottom_moment"
         android:enabled="true"
         android:icon="@drawable/find"
+        android:title="@string/moments"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_bottom_find"
+        android:enabled="true"
+        android:icon="@drawable/near_me"
         android:title="@string/people_around"
         app:showAsAction="ifRoom" />
     <item
